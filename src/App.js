@@ -11,7 +11,6 @@ function App() {
 
     return (
         <div className="App">
-
             <Navbar bg="dark" data-bs-theme="dark">
                 <Container>
                     <Navbar.Brand href="#home">ReachShop</Navbar.Brand>
@@ -39,7 +38,8 @@ function App() {
                         </Container>
                     </>
                 }/>
-                <Route path='/detail' element={<Detail/>}/>
+
+                <Route path='/detail/:id' element={<Detail shoes={shoes}/>}/>
             </Routes>
         </div>
     );
