@@ -7,8 +7,9 @@ import {Routes, Route, Link, useNavigate} from 'react-router-dom'
 import Detail from './pages/Detail'
 import axios from "axios";
 
+
 function App() {
-    let [shoes,setShoes] = useState(data)
+    let [shoes, setShoes] = useState(data)
     let navigate = useNavigate(); // 페이지 이동을 도와줌
     let [clickCnt, setClickCnt] = useState(2);
     let [isLoading, setIsLoading] = useState(false);
@@ -44,7 +45,7 @@ function App() {
                             </Row>
                         </Container>
                         <Button onClick={() => {
-                            setClickCnt(clickCnt+1);
+                            setClickCnt(clickCnt + 1);
                             setIsLoading(true);
                             axios.get(`https://codingapple1.github.io/shop/data${clickCnt}.json`)
                                 .then((result) => {
@@ -58,11 +59,15 @@ function App() {
                             // axios.post('/sad', {name :'kim'})
                         }}>더보기
                         </Button>
-                        <div className={isLoading?'loading':'hidden'}>로딩중입니다.</div>
+                        <div className={isLoading ? 'loading' : 'hidden'}>로딩중입니다.</div>
                     </>
                 }/>
 
-                <Route path='/detail/:id' element={<Detail shoes={shoes}/>}/>
+                <Route path='/detail/:id' element={
+
+                    <Detail shoes={shoes}/>
+
+                }/>
             </Routes>
         </div>
     );

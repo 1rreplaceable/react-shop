@@ -77,13 +77,13 @@ function Detail(props) {
                 </Nav.Item>
             </Nav>
 
-            <TabContent tab={tab}/>
+            <TabContent tab={tab} shoes ={props.shoes}/>
 
         </Container>
     );
 }
 
-function TabContent({tab}) {
+function TabContent({tab, shoes}) {
     let [fade, setFade] = useState('');
     useEffect(() => {
         setTimeout(() => {
@@ -96,7 +96,7 @@ function TabContent({tab}) {
 
     return (<div className={'start ' + fade}>
         {[
-            <div>내용0</div>
+            <div>{shoes[0].title}</div>
             ,
             <div>내용1</div>
             ,
