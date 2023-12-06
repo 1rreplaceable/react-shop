@@ -1,6 +1,8 @@
 import {Nav, Col, Container, Row} from "react-bootstrap";
 import {useNavigate, useParams} from "react-router-dom";
 import React, {useEffect, useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {addItem} from "../store";
 
 
 function Detail(props) {
@@ -13,6 +15,7 @@ function Detail(props) {
     let [inputValue, setInputValue] = useState('');
     let [tab, setTab] = useState(0);
     let [fadePage, setFadePage] = useState('');
+    let dispatch = useDispatch()
     useEffect(() => {
         setTimeout(() => {
             setFadePage('end');
@@ -39,7 +42,7 @@ function Detail(props) {
 
 
     return (
-        <Container className={'start '+fadePage}>
+        <Container className={'start ' + fadePage}>
             {/*<div className={isVisible ? 'alert alert-warning' : 'hidden'}>*/}
             {/*    2초 이내 구매시 할인*/}
             {/*</div>*/}
@@ -56,7 +59,10 @@ function Detail(props) {
                     <h4 className="pt-5">{sh.title}</h4>
                     <p>{sh.content}</p>
                     <p>{sh.price}원</p>
-                    <button className="btn btn-danger">주문하기</button>
+                    <button className="btn btn-danger" onClick={() => {
+                        dispatch(addItem({id: sh.id, name: sh.title, count: 0}))
+                    }}>주문하기
+                    </button>
                 </Col>
             </Row>
             <Nav variant="tabs" defaultActiveKey="link0">
@@ -77,7 +83,7 @@ function Detail(props) {
                 </Nav.Item>
             </Nav>
 
-            <TabContent tab={tab} shoes ={props.shoes}/>
+            <TabContent tab={tab} shoes={props.shoes}/>
 
         </Container>
     );

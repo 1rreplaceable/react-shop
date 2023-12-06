@@ -6,7 +6,7 @@ import {Container, Nav, Navbar, Row, Col, Button} from 'react-bootstrap'
 import {Routes, Route, Link, useNavigate} from 'react-router-dom'
 import Detail from './pages/Detail'
 import axios from "axios";
-
+import Cart from './pages/Cart'
 
 function App() {
     let [shoes, setShoes] = useState(data)
@@ -23,7 +23,7 @@ function App() {
                             navigate('/')
                         }}>Home</Nav.Link>
                         <Nav.Link onClick={() => {
-                            navigate('/detail')
+                            navigate('/cart')
                         }}>Cart</Nav.Link>
                     </Nav>
                 </Container>
@@ -64,10 +64,11 @@ function App() {
                 }/>
 
                 <Route path='/detail/:id' element={
-
                     <Detail shoes={shoes}/>
-
                 }/>
+                <Route path='/cart' element={<Cart/>}/>
+
+
             </Routes>
         </div>
     );
