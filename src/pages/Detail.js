@@ -16,6 +16,16 @@ function Detail(props) {
     let [tab, setTab] = useState(0);
     let [fadePage, setFadePage] = useState('');
     let dispatch = useDispatch()
+
+    useEffect(() => {
+        let watched = localStorage.getItem('watched')
+        watched = JSON.parse(watched)
+        watched.push(sh.id)
+        watched = new Set(watched)
+        watched = Array.from(watched)
+        localStorage.setItem('watched',JSON.stringify(watched))
+    }, []);
+
     useEffect(() => {
         setTimeout(() => {
             setFadePage('end');
