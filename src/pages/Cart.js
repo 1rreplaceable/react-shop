@@ -2,14 +2,20 @@ import {Table} from 'react-bootstrap'
 import {useDispatch, useSelector} from "react-redux";
 import {changeName, changeAge} from "../store/userSlice";
 import {addCount} from "../store";
+import {memo, useMemo, useState} from "react";
+
+// memo, useMemo
 
 function Cart() {
+
 
     let state = useSelector((state) => {
         return state
     })
     // store.js에 요청
     let dispatch = useDispatch()
+    let [count, setCount] = useState(0)
+
 
     return (
         <div>
